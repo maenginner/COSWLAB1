@@ -1,0 +1,26 @@
+<p>This is the partial for view 3.</p>
+<p>
+  Showing of 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
+
+<div ng-controller="ControladorListado">
+    <table class="table table-striped table-hover">
+      <tbody>
+        <tr>
+            <th>
+                <button ng-click="order('task')">Task</button>
+                 <span class="sortorder" ng-show="predicate === 'task'" ng-class="{reverse:reverse}"></span>
+            </th>
+            <th>
+                <button ng-click="order('priority')">Priority</button>
+                <span class="sortorder" ng-show="predicate === 'priority'" ng-class="{reverse:reverse}"></span>
+            </th>		
+        </tr>
+        <tr ng-repeat="todo in listado | orderBy:predicate:reverse">
+          <td>{{todo.task}}</td>
+          <td>{{todo.priority}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
